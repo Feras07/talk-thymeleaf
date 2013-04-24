@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+    <head th:substituteby="common/partials/head">
+    <title>Thymeleaf Demo</title>
+</head>
+
+<body>
+    <header th:substituteby="common/partials/header" />
+    <div class="container-fluid" style="margin-top: 60px;">
+        <div class="row-fluid">
+            <div class="span3">
+                <div th:substituteby="common/partials/sidebar" />
+            </div>
+            <!--/span-->
+            <div class="span9">
+                <h2 th:text="#{home.message}">Welcome to the Thymeleaf Demo!</h2>
+            </div>
+            <!--/span-->
+        </div>
+        <!--/row-->
+    </div>
+    <footer th:substituteby="common/partials/footer" />
+</body>
+</html>

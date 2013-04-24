@@ -1,0 +1,12 @@
+<header class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand" th:href="@{/}">Thymeleaf Demo</a>
+            <div class="nav-collapse collapse">
+                <p class="navbar-text pull-right">
+                    Current Template: <span th:text="${execInfo.templateName}"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+</header>
