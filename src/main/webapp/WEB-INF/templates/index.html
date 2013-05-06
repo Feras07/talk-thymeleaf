@@ -1,13 +1,13 @@
 <!DOCTYPE HTML>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head th:substituteby="common/partials/head"></head>
 
 <body>
-    <header th:substituteby="common/partials/header" />
+    <header th:substituteby="common/partials/header"></header>
     <div class="container-fluid" style="margin-top: 60px;">
         <div class="row-fluid">
             <div class="span3">
-                <div th:substituteby="common/partials/sidebar" />
+                <div th:substituteby="common/partials/sidebar"></div>
             </div>
             <!--/span-->
             <div class="span9">
@@ -17,6 +17,6 @@
         </div>
         <!--/row-->
     </div>
-    <footer th:substituteby="common/partials/footer" />
+    <footer th:substituteby="common/partials/footer"></footer>
 </body>
 </html>

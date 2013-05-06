@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/")
-public class HomeController {
+public class HomeController extends DemoController {
 
     @RequestMapping(value = "/prototype", method = RequestMethod.GET)
     public String getPrototype(HttpServletRequest request, Model model) {

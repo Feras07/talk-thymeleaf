@@ -10,10 +10,20 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/basic-tags")
-public class BasicTagsController {
+public class BasicTagsController extends DemoController {
 
     @RequestMapping(method = RequestMethod.GET)
-    public String getHome(HttpServletRequest request, Model model) {
-        return "basic-tags";
+    public String getTags1(HttpServletRequest request, Model model) {
+        return "basic-tags/basic-tags-1";
+    }
+
+    @RequestMapping(value = "/2", method = RequestMethod.GET)
+    public String getTags2(HttpServletRequest request, Model model) {
+        return "basic-tags/basic-tags-2";
+    }
+
+    @RequestMapping(value = "/3", method = RequestMethod.GET)
+    public String getTags3(HttpServletRequest request, Model model) {
+        return "basic-tags/basic-tags-3";
     }
 }
