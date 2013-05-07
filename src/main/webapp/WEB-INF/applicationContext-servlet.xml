@@ -13,12 +13,12 @@
     <mvc:annotation-driven />
 
     <!-- User @Controller, @Service... annotations -->
-    <context:component-scan base-package="com.credera.talk.thymeleaf.controller" />
+    <context:component-scan base-package="com.credera.talk.thymeleaf" />
 
-    <mvc:resources location="/img/" mapping="/img/**" />
-    <mvc:resources location="/css/" mapping="/css/**" />
-    <mvc:resources location="/js/" mapping="/js/**" />
-    <mvc:resources location="/favicon.ico" mapping="/img/favicon.ico" />
+    <mvc:resources order="-10" location="/img/" mapping="/img/**" />
+    <mvc:resources order="-10" location="/css/" mapping="/css/**" />
+    <mvc:resources order="-10" location="/js/" mapping="/js/**" />
+    <mvc:resources order="-10" location="/favicon.ico" mapping="/img/favicon.ico" />
 
     <!-- Message internalization -->
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">

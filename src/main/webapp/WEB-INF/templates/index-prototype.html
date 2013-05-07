@@ -1,6 +1,6 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="head">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    <header class="navbar navbar-inverse navbar-fixed-top">
+    <header class="navbar navbar-inverse navbar-fixed-top" th:fragemnt="header">
         <div class="navbar-inner">
             <div class="container-fluid">
                 <a class="brand" th:href="@{/}" href="#">Thymeleaf Demo</a>
@@ -36,7 +36,7 @@
     <div class="container-fluid" style="margin-top: 60px;">
         <div class="row-fluid">
             <div class="span3">
-                <div class="well sidebar-nav">
+                <div class="well sidebar-nav" th:fragment="sidebar">
                     <ul class="nav nav-list">
                         <li class="nav-header">Navigation</li>
                         <li><a th:href="@{/basic-tags}" href="#">Basic Tags</a></li>
@@ -55,7 +55,7 @@
         </div>
         <!--/row-->
     </div>
-    <footer>
+    <footer th:fragment="footer">
         <hr />
         <p class="container-fluid">&copy; Credera <span th:text="${#calendars.year(execInfo.now)}" th:remove="tag">2013</span></p>
         <div class="container-fluid" xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/" about="http://www.thymeleaf.org/documentation.html"><span property="dct:title">The Thymeleaf Artwork</span> (<a rel="cc:attributionURL" property="cc:attributionName" href="http://www.thymeleaf.org">The Thymeleaf Project</a>) / <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a></div>
