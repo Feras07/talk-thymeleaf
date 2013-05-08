@@ -16,24 +16,54 @@
                 <h3>3. Conditionals / Remove</h3>
                 <div class="span3">
                     <h4>th:if attribute</h4>
-                    <span th:if="${null}">This text will never display</span>
-                    <span th:text="${null} + 'asdf'">This text will never display</span>
-                    <span th:if="${param.test}">If the test parameter exists</span>
-                    <span th:if="${testParam == '1'}">If the test parameter is 1</span>
+                    <p th:if="${user}">This text will always display</p>
+                    <p th:if="${'sometext'}">This text will always display</p>
+                    <p th:if="${null}">This text will never display</p>
+                    <p th:if="${'off' or 'false' or 'no'}">This text will never display</p>
+                    <p th:if="${param.test}">If the test parameter exists</p>
+                    <p th:if="${testParam == '1'}">If the test parameter is 1</p>
                 </div>
                 <div class="span3">
                     <h4>th:unless attribute</h4>
-                    <span th:unless="${'off' or 'false' or 'no'}">This text will always display</span>
-                    <span th:unless="${param.test}">Unless the test parameter exists</span>
-                    <span th:unless="${testParam == '1'}">Unless the test parameter is 1</span>
+                    <p th:unless="${user}">This text will never display</p>
+                    <p th:unless="${'sometext'}">This text will never display</p>
+                    <p th:unless="${null}">This text will always display</p>
+                    <p th:unless="${'off' or 'false' or 'no'}">This text will always display</p>
+                    <p th:unless="${param.test}">Unless the test parameter exists</p>
+                    <p th:unless="${testParam == '1'}">Unless the test parameter is 1</p>
                 </div>
                 <div class="span3">
                     <h4>th:switch attribute</h4>
-                    <span th:switch="${testParam}">
-                        <span th:case="'1'">Switch message for one</span>
-                        <span th:case="'2'">Switch message for two</span>
-                        <span th:case="*">Default switch message</span>
-                    </span>
+                    <div th:switch="${testParam}" th:remove="tag">
+                        <p th:case="'1'">Switch message for one</p>
+                        <p th:case="'2'">Switch message for two</p>
+                        <p th:case="*">Default switch message</p>
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+                <div class="span3">
+                    <h4>th:remove attribute</h4>
+                    <div th:remove="all">
+                        <!-- This is a comment that is not displayed when rendered -->
+                    </div>
+                    <div th:switch="${testParam}" th:remove="tag">
+                        <p th:case="'1'">Switch message for one</p>
+                        <p th:case="'2'">Switch message for two</p>
+                        <p th:case="*">Default switch message</p>
+                    </div>
+                    <ul th:remove="all-but-first">
+                        <li>First item</li>
+                        <li>Second item</li>
+                        <li>Third item</li>
+                    </ul>
+                    <div class="clearfix" th:remove="body">
+                        <!-- This is a comment that is not displayed when rendered,
+                            but the clearfix div still exists -->
+                    </div>
+                    <div class="ajax-container" th:remove="body">
+                        <!-- This is the template loaded via ajax -->
+                        <div th:substituteby="some/ajax/template"></div>
+                    </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="span8">

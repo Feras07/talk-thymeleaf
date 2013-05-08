@@ -13,10 +13,10 @@
             <div class="span9">
                 <h2>Basics</h2>
                 <br />
-                <h3>3. Expression Syntax</h3>
-                <div class="span3">
+                <h3>3. Expressions / Variables</h3>
+                <div class="span3" th:with="first=*{firstName},last=*{lastName}" th:object="${user}">
                     <h4>${} Standard Expressions</h4>
-                    <span th:text="${user.firstName} + ' this is the standard syntax.'"></span>
+                    <span th:text="${first} + ' this is the standard syntax.'"></span>
                 </div>
                 <div class="span3">
                     <h4>#{} Message Expressions</h4>
@@ -31,10 +31,10 @@
                     <ul>
                         <li><a th:href="@{/basics/3}">Context Relative Link</a></li>
                         <li><a th:href="@{~/basics/3}">Root Relative Link</a></li>
-                        <li><a th:href="@{http://localhost:8080/basic-tags/3}">Full Link</a></li>
-                        <li><a th:href="@{basic-tags/3}">Relative Link</a></li>
+                        <li><a th:href="@{http://www.thymeleaf.org}">Full Link</a></li>
+                        <li><a th:href="@{../basics/3}">Relative Link</a></li>
                         <li><a th:href="@{${param.url} ? ${param.url[0]} : '#'}">Link with Expression</a></li>
-                        <li><a th:href="@{/basic-tags/3(param1='test',param2='test2')}">Link with Params</a></li>
+                        <li><a th:href="@{/basics/3(param1='test',param2='test2')}">Link with Params</a></li>
                     </ul>
                 </div>
                 <div class="clearfix"></div>
