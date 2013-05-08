@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="common/partials/head"></head>
+
+<body>
+    <header th:substituteby="common/partials/header"></header>
+    <div class="container-fluid" style="margin-top: 60px;">
+        <div class="row-fluid">
+            <div class="span3">
+                <div th:substituteby="common/partials/sidebar"></div>
+            </div>
+            <!--/span-->
+            <div class="span9" th:inline="text">
+                <h2>Create Product</h2>
+                <form class="form-horizontal" method="POST" th:object="${productForm}">
+                    <div class="control-group" th:classappend="*{#fields.hasErrors('sku') ? 'error' : ''}">
+                        <label class="control-label" for="sku">Sku</label>
+                        <div class="controls">
+                            <input type="text" th:field="*{sku}" class="span4" />
+                            <span th:if="*{#fields.hasErrors('sku')}" th:each="err : *{#fields.errors('sku')}" th:remove="tag" >
+                                <span class="help-inline error" th:text="${'* ' + err}"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="control-group" th:classappend="*{#fields.hasErrors('name') ? 'error' : ''}">
+                        <label class="control-label" for="name">Name</label>
+                        <div class="controls">
+                            <input type="text" th:field="*{name}" class="span4" />
+                            <span th:if="*{#fields.hasErrors('name')}" th:each="err : *{#fields.errors('name')}" th:remove="tag" >
+                                <span class="help-inline error" th:text="${'* ' + err}"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="control-group" th:classappend="*{#fields.hasErrors('description') ? 'error' : ''}">
+                        <label class="control-label" for="description">Description</label>
+                        <div class="controls">
+                            <input type="text" th:field="*{description}" class="span4" />
+                            <span th:if="*{#fields.hasErrors('description')}" th:each="err : *{#fields.errors('description')}" th:remove="tag" >
+                                <span class="help-inline error" th:text="${'* ' + err}"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="control-group" th:classappend="*{#fields.hasErrors('price') ? 'error' : ''}">
+                        <label class="control-label" for="price">Price</label>
+                        <div class="controls">
+                            <input type="text" th:field="*{price}" class="span4" />
+                            <span th:if="*{#fields.hasErrors('price')}" th:each="err : *{#fields.errors('price')}" th:remove="tag" >
+                                <span class="help-inline error" th:text="${'* ' + err}"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="control-group" th:classappend="*{#fields.hasErrors('category') ? 'error' : ''}">
+                        <label class="control-label" for="category">Category</label>
+                        <div class="controls">
+                            <select th:field="*{category}" class="span4">
+                                <option value="">Select Category</option>
+                                <option th:each="category : ${categories}"  th:value="${category.id}" th:text="${category.name}"></option>
+                            </select>
+                            <span th:if="*{#fields.hasErrors('category')}" th:each="err : *{#fields.errors('category')}" th:remove="tag" >
+                                <span class="help-inline error" th:text="${'* ' + err}"></span>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="submit" class="btn btn-primary" value="Submit" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--/span-->
+        </div>
+        <!--/row-->
+    </div>
+    <footer th:substituteby="common/partials/footer"></footer>
+</body>
+</html>

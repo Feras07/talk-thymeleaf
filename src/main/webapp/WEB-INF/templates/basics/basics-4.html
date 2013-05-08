@@ -16,12 +16,14 @@
                 <h3>3. Conditionals / Remove</h3>
                 <div class="span3">
                     <h4>th:if attribute</h4>
-                    
+                    <span th:if="${null}">This text will never display</span>
+                    <span th:text="${null} + 'asdf'">This text will never display</span>
                     <span th:if="${param.test}">If the test parameter exists</span>
                     <span th:if="${testParam == '1'}">If the test parameter is 1</span>
                 </div>
                 <div class="span3">
                     <h4>th:unless attribute</h4>
+                    <span th:unless="${'off' or 'false' or 'no'}">This text will always display</span>
                     <span th:unless="${param.test}">Unless the test parameter exists</span>
                     <span th:unless="${testParam == '1'}">Unless the test parameter is 1</span>
                 </div>

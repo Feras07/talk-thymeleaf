@@ -1,0 +1,82 @@
+
+package com.credera.talk.thymeleaf.controller;
+
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.credera.talk.thymeleaf.controller.form.ProductForm;
+import com.credera.talk.thymeleaf.controller.form.ProductFormValidator;
+import com.credera.talk.thymeleaf.domain.Category;
+import com.credera.talk.thymeleaf.domain.Money;
+import com.credera.talk.thymeleaf.domain.Product;
+
+import java.beans.PropertyEditorSupport;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+
+@Controller
+@RequestMapping("/forms")
+public class FormController extends DemoController {
+
+    @Resource
+    private ProductFormValidator validator;
+
+    @InitBinder
+    protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) {
+        binder.registerCustomEditor(Category.class, "category", new PropertyEditorSupport() {
+
+            @Override
+            public String getAsText() {
+                if (getValue() != null) {
+                    return ((Category) getValue()).getId().toString();
+                }
+                return null;
+            }
+
+            @Override
+            public void setAsText(String text) {
+                if (!StringUtils.isEmpty(text)) {
+                    setValue(catalogService.getCategoriesMap().get(Long.parseLong(text)));
+                }
+            }
+        });
+    }
+
+    @RequestMapping(method = RequestMethod.GET)
+    public String getProductList(HttpServletRequest request, Model model) {
+        return "forms/productList";
+    }
+
+    @RequestMapping(value = "/new", method = RequestMethod.GET)
+    public String getNewProduct(HttpServletRequest request, Model model,
+            @ModelAttribute("productForm") ProductForm form, BindingResult errors, RedirectAttributes attrs) {
+        return "forms/productForm";
+    }
+
+    @RequestMapping(value = "/new", method = RequestMethod.POST)
+    public String createNewProduct(HttpServletRequest request, Model model,
+            @ModelAttribute("productForm") ProductForm form, BindingResult errors, RedirectAttributes attrs) {
+        validator.validate(form, errors);
+        if (errors.hasErrors()) {
+            return "forms/productForm";
+        }
+        Product product = new Product();
+        product.setSku(form.getSku());
+        product.setName(form.getName());
+        product.setDescription(form.getDescription());
+        product.setPrice(new Money(form.getPrice()));
+        product.setCategory(form.getCategory());
+        catalogService.saveProduct(product);
+        attrs.addFlashAttribute("successMessage", "Successfully added Product");
+        return "redirect:/forms";
+    }
+}

@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:substituteby="common/partials/head"></head>
+
+<body>
+    <header th:substituteby="common/partials/header"></header>
+    <div class="container-fluid" style="margin-top: 60px;">
+        <div class="row-fluid">
+            <div class="span3">
+                <div th:substituteby="common/partials/sidebar"></div>
+            </div>
+            <!--/span-->
+            <div class="span9" th:inline="text">
+                <h2>Create Product</h2>
+                <form class="form-horizontal" method="POST" th:object="${productForm}">
+                    <div th:include="common/controls :: input" th:with="fieldName='sku',fieldLabel='Sku'"></div>
+                    <div th:include="common/controls :: input" th:with="fieldName='name',fieldLabel='Name'"></div>
+                    <div th:include="common/controls :: input" th:with="fieldName='description',fieldLabel='Description'"></div>
+                    <div th:include="common/controls :: input" th:with="fieldName='price',fieldLabel='Price'"></div>
+                    <div th:include="common/controls :: select" th:with="fieldName='category',fieldLabel='Category',fieldOptions=${categoryOptions}"></div>
+                    <div class="control-group">
+                        <div class="controls">
+                            <input type="submit" class="btn btn-primary" value="Submit" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--/span-->
+        </div>
+        <!--/row-->
+    </div>
+    <footer th:substituteby="common/partials/footer"></footer>
+</body>
+</html>

@@ -4,14 +4,21 @@ package com.credera.talk.thymeleaf.domain;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class Product implements Serializable {
+public class Category implements Serializable, Comparable<Category> {
 
     private Long id;
-    private String sku;
     private String name;
     private String description;
-    private Money price;
-    private Category category;
+
+    public Category() {
+
+    }
+
+    public Category(Long id, String name, String description) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+    }
 
     public Long getId() {
         return id;
@@ -19,14 +26,6 @@ public class Product implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
     }
 
     public String getName() {
@@ -45,32 +44,13 @@ public class Product implements Serializable {
         this.description = description;
     }
 
-    public Money getPrice() {
-        return price;
-    }
-
-    public void setPrice(Money price) {
-        this.price = price;
-    }
-
-    public Category getCategory() {
-        return category;
-    }
-
-    public void setCategory(Category category) {
-        this.category = category;
-    }
-
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((category == null) ? 0 : category.hashCode());
         result = prime * result + ((description == null) ? 0 : description.hashCode());
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         result = prime * result + ((name == null) ? 0 : name.hashCode());
-        result = prime * result + ((price == null) ? 0 : price.hashCode());
-        result = prime * result + ((sku == null) ? 0 : sku.hashCode());
         return result;
     }
 
@@ -79,10 +59,7 @@ public class Product implements Serializable {
         if (this == obj) return true;
         if (obj == null) return false;
         if (getClass() != obj.getClass()) return false;
-        Product other = (Product) obj;
-        if (category == null) {
-            if (other.category != null) return false;
-        } else if (!category.equals(other.category)) return false;
+        Category other = (Category) obj;
         if (description == null) {
             if (other.description != null) return false;
         } else if (!description.equals(other.description)) return false;
@@ -92,12 +69,15 @@ public class Product implements Serializable {
         if (name == null) {
             if (other.name != null) return false;
         } else if (!name.equals(other.name)) return false;
-        if (price == null) {
-            if (other.price != null) return false;
-        } else if (!price.equals(other.price)) return false;
-        if (sku == null) {
-            if (other.sku != null) return false;
-        } else if (!sku.equals(other.sku)) return false;
         return true;
+    }
+
+    @Override
+    public int compareTo(Category o) {
+        if (o != null) {
+            return id.compareTo(o.getId());
+        } else {
+            return -1;
+        }
     }
 }

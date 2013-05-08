@@ -11,13 +11,12 @@
             </div>
             <!--/span-->
             <div class="span9">
-                <h2>Iteration</h2>
+                <h2>Product List</h2>
                 <br />
-                <h3>2. Status Variable</h3>
+                <span class="text-success" th:if="${successMessage}" th:text="${successMessage}"></span>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th>Index</th>
                             <th>Sku</th>
                             <th>Name</th>
                             <th>Description</th>
@@ -26,12 +25,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="product : ${products}" th:classappend="${productStat.first} ? 'success' : ${productStat.last ? 'warning' : ''}">
-                            <td th:text="${productStat.index}">0</td>
+                        <tr th:each="product : ${products}">
                             <td th:text="${product.sku}">567863523</td>
                             <td th:text="${product.name}">Test Widget</td>
                             <td th:text="${product.description}">This is a widget for testing gizmos</td>
-                            <td th:text="${product.price.amount}">$10.00</td>
+                            <td cre:price="${product.price}">$10.00</td>
                             <td th:text="${product.category.name}">Widget</td>
                         </tr>
                     </tbody>
@@ -40,7 +38,7 @@
                 <div class="span8">
                     <br />
                     <br />
-                    <a th:href="@{/iteration/3}" class="btn pull-right">Next &raquo;</a>
+                    <a th:href="@{/controls/new}" class="btn pull-right">Create New</a>
                 </div>
             </div>
             <!--/span-->

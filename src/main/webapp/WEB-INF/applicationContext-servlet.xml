@@ -32,9 +32,8 @@
     </mvc:interceptors>
     
     <!-- Thymeleaf configuration -->
-    <bean id="templateResolver"
-        class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
-        <property name="cacheable" value="true" />
+    <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
+        <property name="cacheable" value="false" />
         <property name="prefix" value="/WEB-INF/templates/" />
         <property name="suffix" value=".html" />
         <property name="templateMode" value="HTML5" />
@@ -42,9 +41,33 @@
     </bean>
     <bean id="templateEngine" class="org.thymeleaf.spring3.SpringTemplateEngine">
         <property name="templateResolver" ref="templateResolver" />
+        <property name="dialects">
+            <set>
+                <bean class="org.thymeleaf.spring3.dialect.SpringStandardDialect" />
+                <ref bean="creDialect" />
+                <ref bean="creWebDialect" />
+            </set>
+        </property>
     </bean>
     <bean id="viewResolver" class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine" />
         <property name="characterEncoding" value="UTF-8" />
     </bean>
+    
+    
+    <!-- Dialect configuration -->
+    <bean id="creDialect" class="com.credera.talk.thymeleaf.dialect.CrederaDialect">
+        <property name="processors">
+          <set>
+            <ref bean="priceProcessor" />
+          </set>
+        </property>
+    </bean> 
+    <bean id="creWebDialect" class="com.credera.talk.thymeleaf.dialect.CrederaWebDialect">
+        <property name="processors">
+          <set>
+            <ref bean="formProcessor" />
+          </set>
+        </property>
+    </bean> 
 </beans>

@@ -29,7 +29,8 @@
                 <div class="span9">
                     <h4>@{} URL Expressions</h4>
                     <ul>
-                        <li><a th:href="@{/basic-tags/3}">Root Relative Link</a></li>
+                        <li><a th:href="@{/basics/3}">Context Relative Link</a></li>
+                        <li><a th:href="@{~/basics/3}">Root Relative Link</a></li>
                         <li><a th:href="@{http://localhost:8080/basic-tags/3}">Full Link</a></li>
                         <li><a th:href="@{basic-tags/3}">Relative Link</a></li>
                         <li><a th:href="@{${param.url} ? ${param.url[0]} : '#'}">Link with Expression</a></li>

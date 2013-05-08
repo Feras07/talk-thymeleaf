@@ -2,6 +2,10 @@
 package com.credera.talk.thymeleaf.processor;
 
 import org.springframework.stereotype.Component;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.web.util.WebUtils;
 import org.thymeleaf.Arguments;
 import org.thymeleaf.dom.Element;
 import org.thymeleaf.processor.attr.AbstractTextChildModifierAttrProcessor;
@@ -11,6 +15,9 @@ import com.credera.talk.thymeleaf.domain.Money;
 
 import java.math.BigDecimal;
 import java.text.NumberFormat;
+import java.util.Locale;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Component("priceProcessor")
 public class PriceProcessor extends AbstractTextChildModifierAttrProcessor {
@@ -41,7 +48,10 @@ public class PriceProcessor extends AbstractTextChildModifierAttrProcessor {
         } else {
             throw new IllegalArgumentException("Input is not of type Money or BigDecimal");
         }
-        NumberFormat format = NumberFormat.getCurrencyInstance();
+        HttpServletRequest curRequest = ((ServletRequestAttributes) RequestContextHolder.currentRequestAttributes()).getRequest();
+        Locale curLocale = (Locale) WebUtils.getSessionAttribute(curRequest, SessionLocaleResolver.LOCALE_SESSION_ATTRIBUTE_NAME);
+        curLocale = (curLocale == null) ? Locale.US : curLocale;
+        NumberFormat format = NumberFormat.getCurrencyInstance(curLocale);
         format.setCurrency(price.getCurrency());
         return format.format(price.getAmount());
     }
