@@ -17,36 +17,28 @@
                         <label class="control-label" for="sku">Sku</label>
                         <div class="controls">
                             <input type="text" th:field="*{sku}" class="span4" />
-                            <span th:if="*{#fields.hasErrors('sku')}" th:each="err : *{#fields.errors('sku')}" th:remove="tag" >
-                                <span class="help-inline error" th:text="${'* ' + err}"></span>
-                            </span>
+                            <span th:each="err : *{#fields.errors('sku')}" th:text="${'* ' + err}" class="help-inline"></span>
                         </div>
                     </div>
                     <div class="control-group" th:classappend="*{#fields.hasErrors('name') ? 'error' : ''}">
                         <label class="control-label" for="name">Name</label>
                         <div class="controls">
                             <input type="text" th:field="*{name}" class="span4" />
-                            <span th:if="*{#fields.hasErrors('name')}" th:each="err : *{#fields.errors('name')}" th:remove="tag" >
-                                <span class="help-inline error" th:text="${'* ' + err}"></span>
-                            </span>
+                            <span th:each="err : *{#fields.errors('name')}" th:text="${'* ' + err}" class="help-inline"></span>
                         </div>
                     </div>
                     <div class="control-group" th:classappend="*{#fields.hasErrors('description') ? 'error' : ''}">
                         <label class="control-label" for="description">Description</label>
                         <div class="controls">
                             <input type="text" th:field="*{description}" class="span4" />
-                            <span th:if="*{#fields.hasErrors('description')}" th:each="err : *{#fields.errors('description')}" th:remove="tag" >
-                                <span class="help-inline error" th:text="${'* ' + err}"></span>
-                            </span>
+                            <span th:each="err : *{#fields.errors('description')}" th:text="${'* ' + err}" class="help-inline"></span>
                         </div>
                     </div>
                     <div class="control-group" th:classappend="*{#fields.hasErrors('price') ? 'error' : ''}">
                         <label class="control-label" for="price">Price</label>
                         <div class="controls">
                             <input type="text" th:field="*{price}" class="span4" />
-                            <span th:if="*{#fields.hasErrors('price')}" th:each="err : *{#fields.errors('price')}" th:remove="tag" >
-                                <span class="help-inline error" th:text="${'* ' + err}"></span>
-                            </span>
+                            <span th:each="err : *{#fields.errors('price')}" th:text="${'* ' + err}" class="help-inline"></span>
                         </div>
                     </div>
                     <div class="control-group" th:classappend="*{#fields.hasErrors('category') ? 'error' : ''}">
@@ -56,9 +48,7 @@
                                 <option value="">Select Category</option>
                                 <option th:each="category : ${categories}"  th:value="${category.id}" th:text="${category.name}"></option>
                             </select>
-                            <span th:if="*{#fields.hasErrors('category')}" th:each="err : *{#fields.errors('category')}" th:remove="tag" >
-                                <span class="help-inline error" th:text="${'* ' + err}"></span>
-                            </span>
+                            <span th:each="err : *{#fields.errors('category')}" th:text="${'* ' + err}" class="help-inline"></span>
                         </div>
                     </div>
                     <div class="control-group">

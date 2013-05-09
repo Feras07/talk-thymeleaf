@@ -64,9 +64,7 @@
          -->
     </div>
     <div th:fragment="error" th:remove="tag">
-        <span th:if="*{#fields.hasErrors('__${fieldName}__')}" th:each="err : *{#fields.errors('__${fieldName}__')}" th:remove="tag" >
-            <span class="help-inline error" th:text="${'* ' + err}"></span>
-        </span>
+        <span th:each="err : *{#fields.errors('__${fieldName}__')}" th:text="${'* ' + err}" class="help-inline"></span>
     </div>
     
     

@@ -13,11 +13,11 @@
             <div class="span9" th:inline="text">
                 <h2>Create Product</h2>
                 <form class="form-horizontal" method="POST" th:object="${productForm}">
-                    <div th:include="common/controls :: input" th:with="fieldName='sku',fieldLabel='Sku'"></div>
-                    <div th:include="common/controls :: input" th:with="fieldName='name',fieldLabel='Name'"></div>
-                    <div th:include="common/controls :: input" th:with="fieldName='description',fieldLabel='Description'"></div>
-                    <div th:include="common/controls :: input" th:with="fieldName='price',fieldLabel='Price'"></div>
-                    <div th:include="common/controls :: select" th:with="fieldName='category',fieldLabel='Category',fieldOptions=${categoryOptions}"></div>
+                    <div th:include="common/controls :: input" th:with="fieldName='sku',fieldLabel='Sku'" th:remove="tag"></div>
+                    <div th:include="common/controls :: input" th:with="fieldName='name',fieldLabel='Name'" th:remove="tag"></div>
+                    <div th:include="common/controls :: input" th:with="fieldName='description',fieldLabel='Description'" th:remove="tag"></div>
+                    <div th:include="common/controls :: input" th:with="fieldName='price',fieldLabel='Price'" th:remove="tag"></div>
+                    <div th:include="common/controls :: select" th:with="fieldName='category',fieldLabel='Category',fieldOptions=${categoryOptions}" th:remove="tag"></div>
                     <div class="control-group">
                         <div class="controls">
                             <input type="submit" class="btn btn-primary" value="Submit" />
