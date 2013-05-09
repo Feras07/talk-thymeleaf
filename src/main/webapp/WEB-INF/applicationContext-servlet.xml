@@ -53,7 +53,12 @@
         <property name="templateEngine" ref="templateEngine" />
         <property name="characterEncoding" value="UTF-8" />
         <property name="order" value="0" />
-        <property name="excludedViewNames" value="jsp/*" />
+        <property name="excludedViewNames">
+            <list>
+                <value>jsp/*</value>
+                <value>layout/*</value>
+            </list>
+        </property>
     </bean>
     
     
@@ -73,10 +78,20 @@
         </property>
     </bean> 
     
+    <!-- Layout view resolver configuration -->
+    <bean id="layoutViewResolver" class="com.credera.talk.thymeleaf.layout.LayoutThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine" />
+        <property name="characterEncoding" value="UTF-8" />
+        <property name="order" value="1" />
+        <property name="viewNames" value="layout/*" />
+        <property name="excludedViewNames" value="jsp/*" />
+        <property name="defaultLayout" value="layout/defaultLayout" />
+    </bean>
+    
     <!-- JSP Configuration -->
     <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="prefix" value="/WEB-INF/" />
         <property name="suffix" value=".jsp" />
-        <property name="order" value="1" />
+        <property name="order" value="2" />
     </bean>
 </beans>

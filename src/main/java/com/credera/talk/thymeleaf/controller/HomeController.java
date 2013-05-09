@@ -28,4 +28,9 @@ public class HomeController extends DemoController {
         model.addAttribute("message", "(JSP version)");
         return "jsp/index";
     }
+
+    @RequestMapping(value = "/layout", method = RequestMethod.GET)
+    public String getlayout(HttpServletRequest request, Model model) {
+        return "layout/index-layout";
+    }
 }
