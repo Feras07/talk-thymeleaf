@@ -1,4 +1,5 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page isELIgnored="false" %> 
 <%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML>
@@ -54,7 +55,7 @@
             </div>
             <!--/span-->
             <div class="span9">
-                <h2><c:out value="${message}" /></h2>
+                <h2><fmt:message key="home.message"></fmt:message> <c:out value="${message}"/></h2>
             </div>
             <!--/span-->
         </div>

@@ -25,7 +25,7 @@ public class HomeController extends DemoController {
 
     @RequestMapping(value = "/jsp", method = RequestMethod.GET)
     public String getJSP(HttpServletRequest request, Model model) {
-        model.addAttribute("message", "Welcome to the Thymeleaf Demo (JSP)!");
+        model.addAttribute("message", "(JSP version)");
         return "jsp/index";
     }
 }
