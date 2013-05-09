@@ -52,6 +52,8 @@
     <bean id="viewResolver" class="org.thymeleaf.spring3.view.ThymeleafViewResolver">
         <property name="templateEngine" ref="templateEngine" />
         <property name="characterEncoding" value="UTF-8" />
+        <property name="order" value="0" />
+        <property name="excludedViewNames" value="jsp/*" />
     </bean>
     
     
@@ -70,4 +72,11 @@
           </set>
         </property>
     </bean> 
+    
+    <!-- JSP Configuration -->
+    <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
+        <property name="prefix" value="/WEB-INF/" />
+        <property name="suffix" value=".jsp" />
+        <property name="order" value="1" />
+    </bean>
 </beans>

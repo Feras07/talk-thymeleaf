@@ -22,4 +22,10 @@ public class HomeController extends DemoController {
     public String getHome(HttpServletRequest request, Model model) {
         return "index";
     }
+
+    @RequestMapping(value = "/jsp", method = RequestMethod.GET)
+    public String getJSP(HttpServletRequest request, Model model) {
+        model.addAttribute("message", "Welcome to the Thymeleaf Demo (JSP)!");
+        return "jsp/index";
+    }
 }
