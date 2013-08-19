@@ -1,72 +1,53 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="common/partials/head"></head>
-
-<body>
-    <header th:substituteby="common/partials/header"></header>
-    <div class="container-fluid" style="margin-top: 60px;">
-        <div class="row-fluid">
-            <div class="span3">
-                <div th:substituteby="common/partials/sidebar"></div>
-            </div>
-            <!--/span-->
-            <div class="span9">
-                <h2>Iteration</h2>
-                <br />
-                <h3>3. Selection</h3>
-                <h4>Gizmo Table</h4>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Sku</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="product : ${products.?[category.name == 'Gizmo']}" th:object="${product}" >
-                            <td th:text="*{sku}">567863523</td>
-                            <td th:text="*{name}">Test Widget</td>
-                            <td th:text="*{description}">This is a widget for testing gizmos</td>
-                            <td th:text="*{price.amount}">$10.00</td>
-                            <td th:text="*{category.name}">Widget</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <h4>Widget Table</h4>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Sku</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="product : ${products.?[category.name == 'Widget']}" th:object="${product}" >
-                            <td th:text="*{sku}">567863523</td>
-                            <td th:text="*{name}">Test Widget</td>
-                            <td th:text="*{description}">This is a widget for testing gizmos</td>
-                            <td th:text="*{price.amount}">$10.00</td>
-                            <td th:text="*{category.name}">Widget</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="clearfix"></div>
-                <div class="span8">
-                    <br />
-                    <br />
-                    <a th:href="@{/iteration/4}" class="btn pull-right">Next &raquo;</a>
-                </div>
-            </div>
-            <!--/span-->
-        </div>
-        <!--/row-->
+<div th:remove="tag" xmlns:th="http://www.thymeleaf.org">
+    <h2>Iteration</h2>
+    <br />
+    <h3>3. Selection</h3>
+    <h4>Gizmo Table</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sku</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products.?[category.name == 'Gizmo']}" th:object="${product}" >
+                <td th:text="*{sku}">567863523</td>
+                <td th:text="*{name}">Test Widget</td>
+                <td th:text="*{description}">This is a widget for testing gizmos</td>
+                <td th:text="*{price.amount}">$10.00</td>
+                <td th:text="*{category.name}">Widget</td>
+            </tr>
+        </tbody>
+    </table>
+    <h4>Widget Table</h4>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sku</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products.?[category.name == 'Widget']}" th:object="${product}" >
+                <td th:text="*{sku}">567863523</td>
+                <td th:text="*{name}">Test Widget</td>
+                <td th:text="*{description}">This is a widget for testing gizmos</td>
+                <td th:text="*{price.amount}">$10.00</td>
+                <td th:text="*{category.name}">Widget</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="clearfix"></div>
+    <div class="span8">
+        <br />
+        <br />
+        <a th:href="@{/iteration/4}" class="btn pull-right">Next &raquo;</a>
     </div>
-    <footer th:substituteby="common/partials/footer"></footer>
-</body>
-</html>
+</div>

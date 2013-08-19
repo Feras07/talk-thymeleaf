@@ -1,53 +1,34 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="common/partials/head"></head>
-
-<body>
-    <header th:substituteby="common/partials/header"></header>
-    <div class="container-fluid" style="margin-top: 60px;">
-        <div class="row-fluid">
-            <div class="span3">
-                <div th:substituteby="common/partials/sidebar"></div>
-            </div>
-            <!--/span-->
-            <div class="span9">
-                <h2>Basics</h2>
-                <br />
-                <h3>3. Expressions / Variables</h3>
-                <div class="span3" th:with="first=*{firstName},last=*{lastName}" th:object="${user}">
-                    <h4>${} Standard Expressions</h4>
-                    <span th:text="${first} + ' this is the standard syntax.'"></span>
-                </div>
-                <div class="span3">
-                    <h4>#{} Message Expressions</h4>
-                    <span th:text="#{tags.greeting}"></span>
-                </div>
-                <div class="span3" th:object="${user}">
-                    <h4>*{} Selection Expressions</h4>
-                    <span th:text="*{firstName} + ' this is the selection syntax.'"></span>
-                </div>
-                <div class="span9">
-                    <h4>@{} URL Expressions</h4>
-                    <ul>
-                        <li><a th:href="@{/basics/3}">Context Relative Link</a></li>
-                        <li><a th:href="@{~/basics/3}">Root Relative Link</a></li>
-                        <li><a th:href="@{http://www.thymeleaf.org}">Full Link</a></li>
-                        <li><a th:href="@{../basics/3}">Relative Link</a></li>
-                        <li><a th:href="@{${param.url} ? ${param.url[0]} : '#'}">Link with Expression</a></li>
-                        <li><a th:href="@{/basics/3(param1='test',param2='test2')}">Link with Params</a></li>
-                    </ul>
-                </div>
-                <div class="clearfix"></div>
-                <div class="span8">
-                    <br />
-                    <br />
-                    <a th:href="@{/basics/4}" class="btn pull-right">Next &raquo;</a>
-                </div>
-            </div>
-            <!--/span-->
-        </div>
-        <!--/row-->
+<div th:remove="tag" xmlns:th="http://www.thymeleaf.org">
+    <h2>Basics</h2>
+    <br />
+    <h3>3. Expressions / Variables</h3>
+    <div class="span3" th:with="first=*{firstName},last=*{lastName}" th:object="${user}">
+        <h4>${} Standard Expressions</h4>
+        <span th:text="${first} + ' this is the standard syntax.'"></span>
     </div>
-    <footer th:substituteby="common/partials/footer"></footer>
-</body>
-</html>
+    <div class="span3">
+        <h4>#{} Message Expressions</h4>
+        <span th:text="#{tags.greeting}"></span>
+    </div>
+    <div class="span3" th:object="${user}">
+        <h4>*{} Selection Expressions</h4>
+        <span th:text="*{firstName} + ' this is the selection syntax.'"></span>
+    </div>
+    <div class="span9">
+        <h4>@{} URL Expressions</h4>
+        <ul>
+            <li><a th:href="@{/basics/3}">Context Relative Link</a></li>
+            <li><a th:href="@{~/basics/3}">Root Relative Link</a></li>
+            <li><a th:href="@{http://www.thymeleaf.org}">Full Link</a></li>
+            <li><a th:href="@{../basics/3}">Relative Link</a></li>
+            <li><a th:href="@{${param.url} ? ${param.url[0]} : '#'}">Link with Expression</a></li>
+            <li><a th:href="@{/basics/3(param1='test',param2='test2')}">Link with Params</a></li>
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+    <div class="span8">
+        <br />
+        <br />
+        <a th:href="@{/basics/4}" class="btn pull-right">Next &raquo;</a>
+    </div>
+</div>

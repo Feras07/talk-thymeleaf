@@ -1,73 +1,54 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="common/partials/head"></head>
-
-<body>
-    <header th:substituteby="common/partials/header"></header>
-    <div class="container-fluid" style="margin-top: 60px;">
-        <div class="row-fluid">
-            <div class="span3">
-                <div th:substituteby="common/partials/sidebar"></div>
+<div th:remove="tag" th:inline="text" xmlns:th="http://www.thymeleaf.org">
+    <h2>Custom Dialects</h2>
+    <br />
+    <h3>1. CSRF Token</h3>
+    <form class="form-horizontal" method="POST">
+        <div class="control-group">
+            <label class="control-label" for="category">Categories</label>
+            <div class="controls">
+                <select class="category" name="category">
+                    <option value="">Select Category</option>
+                    <option th:each="category : ${categories}" 
+                            th:value="${category.id}" th:text="${category.name}"></option>
+                </select>
             </div>
-            <!--/span-->
-            <div class="span9" th:inline="text">
-                <h2>Custom Dialects</h2>
-                <br />
-                <h3>1. CSRF Token</h3>
-                <form class="form-horizontal" method="POST">
-                    <div class="control-group">
-                        <label class="control-label" for="category">Categories</label>
-                        <div class="controls">
-                            <select class="category" name="category">
-                                <option value="">Select Category</option>
-                                <option th:each="category : ${categories}" 
-                                        th:value="${category.id}" th:text="${category.name}"></option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="control-group">
-                        <label class="control-label" for="products">Products</label>
-                        <div class="controls">
-                            <select class="product-list" name="products" th:disabled="${'true'}">
-                                <option value="">Select Product</option>
-                            </select>
-                        </div>
-                    </div>
-                </form>
-                <script type="text/javascript" th:inline="javascript" >
-                /*<![CDATA[*/
-                    var user = /*[[${user}]]*/ {'firstName':'Test','lastName':'User'};
-                    var categoryProductMap = /*[[${categoryProductMap}]]*/ {};
-                    $(document).ready(function() {
-                        $(document).on('change', '.category',function() {
-                            var $productList = $(this).parents('form').find('.product-list');
-                            var currentProducts = categoryProductMap[$(this).val()];
-                            var emptyOption = new Option("Select Product", "");
-                            $productList.find('option').remove();
-                            $productList.append(emptyOption);
-                            if (currentProducts) {
-                                $.each(currentProducts, function(index, item) {
-                                    $productList.append(new Option(item.name + ' - ' + item.sku , item.id));
-                                });
-                                $productList.prop('disabled', false);
-                            } else {
-                                $productList.prop('disabled', true);
-                            }
-                        });
-                    });
-                 /*]]>*/
-                </script>
-                <div class="clearfix"></div>
-                <div class="span8">
-                    <br />
-                    <br />
-                    <a th:href="@{/forms}" class="btn pull-right">Next &raquo;</a>
-                </div>
-            </div>
-            <!--/span-->
         </div>
-        <!--/row-->
+        <div class="control-group">
+            <label class="control-label" for="products">Products</label>
+            <div class="controls">
+                <select class="product-list" name="products" th:disabled="${'true'}">
+                    <option value="">Select Product</option>
+                </select>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript" th:inline="javascript" >
+    /*<![CDATA[*/
+        var user = /*[[${user}]]*/ {'firstName':'Test','lastName':'User'};
+        var categoryProductMap = /*[[${categoryProductMap}]]*/ {};
+        $(document).ready(function() {
+            $(document).on('change', '.category',function() {
+                var $productList = $(this).parents('form').find('.product-list');
+                var currentProducts = categoryProductMap[$(this).val()];
+                var emptyOption = new Option("Select Product", "");
+                $productList.find('option').remove();
+                $productList.append(emptyOption);
+                if (currentProducts) {
+                    $.each(currentProducts, function(index, item) {
+                        $productList.append(new Option(item.name + ' - ' + item.sku , item.id));
+                    });
+                    $productList.prop('disabled', false);
+                } else {
+                    $productList.prop('disabled', true);
+                }
+            });
+        });
+     /*]]>*/
+    </script>
+    <div class="clearfix"></div>
+    <div class="span8">
+        <br />
+        <br />
+        <a th:href="@{/forms}" class="btn pull-right">Next &raquo;</a>
     </div>
-    <footer th:substituteby="common/partials/footer"></footer>
-</body>
-</html>
+</div>

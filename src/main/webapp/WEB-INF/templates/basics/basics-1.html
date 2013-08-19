@@ -1,42 +1,23 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="common/partials/head"></head>
-
-<body>
-    <header th:substituteby="common/partials/header"></header>
-    <div class="container-fluid" style="margin-top: 60px;">
-        <div class="row-fluid">
-            <div class="span3">
-                <div th:substituteby="common/partials/sidebar"></div>
-            </div>
-            <!--/span-->
-            <div class="span9">
-                <h2>Basics</h2>
-                <br />
-                <h3>1. Text and Messaging</h3>
-                <div class="span3">
-                    <h4>Internationalized Message</h4>
-                    <span th:text="#{tags.greeting}">Hello World!</span>
-                </div>
-                <div class="span3">
-                    <h4>Parameterized Message</h4>
-                    <span th:text="#{tags.greeting.personal(${user.firstName})}">Hello User!</span>
-                </div>
-                <div class="span3">
-                    <h4>Formatted Message</h4>
-                    <span th:utext="#{tags.greeting.formatted(${user.firstName})}">Hello <strong>World</strong>!</span>
-                </div>
-                <div class="clearfix"></div>
-                <div class="span8">
-                    <br />
-                    <br />
-                    <a th:href="@{/basics/2}" class="btn pull-right">Next &raquo;</a>
-                </div>
-            </div>
-            <!--/span-->
-        </div>
-        <!--/row-->
+<div th:remove="tag" xmlns:th="http://www.thymeleaf.org">
+    <h2>Basics</h2>
+    <br />
+    <h3>1. Text and Messaging</h3>
+    <div class="span3">
+        <h4>Internationalized Message</h4>
+        <span th:text="#{tags.greeting}">Hello World!</span>
     </div>
-    <footer th:substituteby="common/partials/footer"></footer>
-</body>
-</html>
+    <div class="span3">
+        <h4>Parameterized Message</h4>
+        <span th:text="#{tags.greeting.personal(${user.firstName})}">Hello User!</span>
+    </div>
+    <div class="span3">
+        <h4>Formatted Message</h4>
+        <span th:utext="#{tags.greeting.formatted(${user.firstName})}">Hello <strong>World</strong>!</span>
+    </div>
+    <div class="clearfix"></div>
+    <div class="span8">
+        <br />
+        <br />
+        <a th:href="@{/basics/2}" class="btn pull-right">Next &raquo;</a>
+    </div>
+</div>

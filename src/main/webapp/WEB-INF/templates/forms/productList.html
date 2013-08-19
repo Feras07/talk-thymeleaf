@@ -1,50 +1,31 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="common/partials/head"></head>
-
-<body>
-    <header th:substituteby="common/partials/header"></header>
-    <div class="container-fluid" style="margin-top: 60px;">
-        <div class="row-fluid">
-            <div class="span3">
-                <div th:substituteby="common/partials/sidebar"></div>
-            </div>
-            <!--/span-->
-            <div class="span9">
-                <h2>Product List</h2>
-                <br />
-                <span class="text-success" th:if="${successMessage}" th:text="${successMessage}"></span>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Sku</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
-                            <th>Category</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr th:each="product : ${products}">
-                            <td th:text="${product.sku}">567863523</td>
-                            <td th:text="${product.name}">Test Widget</td>
-                            <td th:text="${product.description}">This is a widget for testing gizmos</td>
-                            <td cre:price="${product.price}">$10.00</td>
-                            <td th:text="${product.category.name}">Widget</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="clearfix"></div>
-                <div class="span8">
-                    <br />
-                    <br />
-                    <a th:href="@{/forms/new}" class="btn pull-right">Create New</a>
-                </div>
-            </div>
-            <!--/span-->
-        </div>
-        <!--/row-->
+<div th:remove="tag" xmlns:th="http://www.thymeleaf.org">
+    <h2>Product List</h2>
+    <br />
+    <span class="text-success" th:if="${successMessage}" th:text="${successMessage}"></span>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sku</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.sku}">567863523</td>
+                <td th:text="${product.name}">Test Widget</td>
+                <td th:text="${product.description}">This is a widget for testing gizmos</td>
+                <td cre:price="${product.price}">$10.00</td>
+                <td th:text="${product.category.name}">Widget</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="clearfix"></div>
+    <div class="span8">
+        <br />
+        <br />
+        <a th:href="@{/forms/new}" class="btn pull-right">Create New</a>
     </div>
-    <footer th:substituteby="common/partials/footer"></footer>
-</body>
-</html>
+</div>

@@ -1,56 +1,37 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="common/partials/head"></head>
-
-<body>
-    <header th:substituteby="common/partials/header"></header>
-    <div class="container-fluid" style="margin-top: 60px;">
-        <div class="row-fluid">
-            <div class="span3">
-                <div th:substituteby="common/partials/sidebar"></div>
-            </div>
-            <!--/span-->
-            <div class="span9">
-                <h2>Basics</h2>
-                <br />
-                <h3>2. Basic Attribute Tags</h3>
-                <div class="span3">
-                    <h4>Class attribute</h4>
-                    <span th:class="${user.firstName == 'Justin'} ? 'text-error' : ''">This span is red</span>
-                </div>
-                <div class="span3">
-                    <h4>Classappend attribute</h4>
-                    <span class="text-error" th:classappend="${param.selected}? 'text-success' : ''">
-                        This span is green if selected exists
-                    </span>
-                </div>
-                <div class="span3">
-                    <h4>Attr Attribute</h4>
-                    <span th:attr="class=${user.firstName == 'Justin' ? 'text-error' : ''}">This span is red</span>
-                </div>
-                <div class="span3">
-                    <h4>Attrappend attribute</h4>
-                    <span class="text-error" th:attrappend="class=${param.selected} ? ' text-success' : ''">
-                        This span is green if selected exists
-                    </span>
-                </div>
-                <div class="span3">
-                    <h4>Attrprepend attribute</h4>
-                    <span class="text-error" th:attrprepend="class=${param.selected} ? 'text-success ' : ''">
-                        This span is green if selected exists
-                    </span>
-                </div>
-                <div class="clearfix"></div>
-                <div class="span8">
-                    <br />
-                    <br />
-                    <a th:href="@{/basics/3}" class="btn pull-right">Next &raquo;</a>
-                </div>
-            </div>
-            <!--/span-->
-        </div>
-        <!--/row-->
+<div th:remove="tag" xmlns:th="http://www.thymeleaf.org">
+    <h2>Basics</h2>
+    <br />
+    <h3>2. Basic Attribute Tags</h3>
+    <div class="span3">
+        <h4>Class attribute</h4>
+        <span th:class="${user.firstName == 'Justin'} ? 'text-error' : ''">This span is red</span>
     </div>
-    <footer th:substituteby="common/partials/footer"></footer>
-</body>
-</html>
+    <div class="span3">
+        <h4>Classappend attribute</h4>
+        <span class="text-error" th:classappend="${param.selected}? 'text-success' : ''">
+            This span is green if selected exists
+        </span>
+    </div>
+    <div class="span3">
+        <h4>Attr Attribute</h4>
+        <span th:attr="class=${user.firstName == 'Justin' ? 'text-error' : ''}">This span is red</span>
+    </div>
+    <div class="span3">
+        <h4>Attrappend attribute</h4>
+        <span class="text-error" th:attrappend="class=${param.selected} ? ' text-success' : ''">
+            This span is green if selected exists
+        </span>
+    </div>
+    <div class="span3">
+        <h4>Attrprepend attribute</h4>
+        <span class="text-error" th:attrprepend="class=${param.selected} ? 'text-success ' : ''">
+            This span is green if selected exists
+        </span>
+    </div>
+    <div class="clearfix"></div>
+    <div class="span8">
+        <br />
+        <br />
+        <a th:href="@{/basics/3}" class="btn pull-right">Next &raquo;</a>
+    </div>
+</div>

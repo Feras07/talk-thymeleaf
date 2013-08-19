@@ -15,12 +15,12 @@ public class HomeController extends DemoController {
     @RequestMapping(value = "/prototype", method = RequestMethod.GET)
     public String getPrototype(HttpServletRequest request, Model model) {
         model.addAttribute("message", "Welcome to the Thymeleaf Demo!");
-        return "index-prototype";
+        return "fullPage/index-prototype";
     }
 
     @RequestMapping(method = RequestMethod.GET)
     public String getHome(HttpServletRequest request, Model model) {
-        return "index";
+        return "fullPage/index";
     }
 
     @RequestMapping(value = "/jsp", method = RequestMethod.GET)

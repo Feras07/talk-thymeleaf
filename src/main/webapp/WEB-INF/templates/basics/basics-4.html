@@ -1,81 +1,62 @@
-<!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
-<head th:substituteby="common/partials/head"></head>
-
-<body>
-    <header th:substituteby="common/partials/header"></header>
-    <div class="container-fluid" style="margin-top: 60px;">
-        <div class="row-fluid">
-            <div class="span3">
-                <div th:substituteby="common/partials/sidebar"></div>
-            </div>
-            <!--/span-->
-            <div class="span9" th:with="testParam=${param.test != null ? param.test[0] : null}">
-                <h2>Basics</h2>
-                <br />
-                <h3>3. Conditionals / Remove</h3>
-                <div class="span3">
-                    <h4>th:if attribute</h4>
-                    <p th:if="${user}">This text will always display</p>
-                    <p th:if="${'sometext'}">This text will always display</p>
-                    <p th:if="${null}">This text will never display</p>
-                    <p th:if="${'off' or 'false' or 'no'}">This text will never display</p>
-                    <p th:if="${param.test}">If the test parameter exists</p>
-                    <p th:if="${testParam == '1'}">If the test parameter is 1</p>
-                </div>
-                <div class="span3">
-                    <h4>th:unless attribute</h4>
-                    <p th:unless="${user}">This text will never display</p>
-                    <p th:unless="${'sometext'}">This text will never display</p>
-                    <p th:unless="${null}">This text will always display</p>
-                    <p th:unless="${'off' or 'false' or 'no'}">This text will always display</p>
-                    <p th:unless="${param.test}">Unless the test parameter exists</p>
-                    <p th:unless="${testParam == '1'}">Unless the test parameter is 1</p>
-                </div>
-                <div class="span3">
-                    <h4>th:switch attribute</h4>
-                    <div th:switch="${testParam}" th:remove="tag">
-                        <p th:case="'1'">Switch message for one</p>
-                        <p th:case="'2'">Switch message for two</p>
-                        <p th:case="*">Default switch message</p>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="span3">
-                    <h4>th:remove attribute</h4>
-                    <div th:remove="all">
-                        <!-- This is a comment that is not displayed when rendered -->
-                    </div>
-                    <div th:switch="${testParam}" th:remove="tag">
-                        <p th:case="'1'">Switch message for one</p>
-                        <p th:case="'2'">Switch message for two</p>
-                        <p th:case="*">Default switch message</p>
-                    </div>
-                    <ul th:remove="all-but-first">
-                        <li>First item</li>
-                        <li>Second item</li>
-                        <li>Third item</li>
-                    </ul>
-                    <div class="clearfix" th:remove="body">
-                        <!-- This is a comment that is not displayed when rendered,
-                            but the clearfix div still exists -->
-                    </div>
-                    <div class="ajax-container" th:remove="body">
-                        <!-- This is the template loaded via ajax -->
-                        <div th:substituteby="some/ajax/template"></div>
-                    </div>
-                </div>
-                <div class="clearfix"></div>
-                <div class="span8">
-                    <br />
-                    <br />
-                    <a th:href="@{/iteration}" class="btn pull-right">Next &raquo;</a>
-                </div>
-            </div>
-            <!--/span-->
-        </div>
-        <!--/row-->
+<div th:remove="tag" th:with="testParam=${param.test != null ? param.test[0] : null}" xmlns:th="http://www.thymeleaf.org">
+    <h2>Basics</h2>
+    <br />
+    <h3>3. Conditionals / Remove</h3>
+    <div class="span3">
+        <h4>th:if attribute</h4>
+        <p th:if="${user}">This text will always display</p>
+        <p th:if="${'sometext'}">This text will always display</p>
+        <p th:if="${null}">This text will never display</p>
+        <p th:if="${'off' or 'false' or 'no'}">This text will never display</p>
+        <p th:if="${param.test}">If the test parameter exists</p>
+        <p th:if="${testParam == '1'}">If the test parameter is 1</p>
     </div>
-    <footer th:substituteby="common/partials/footer"></footer>
-</body>
-</html>
+    <div class="span3">
+        <h4>th:unless attribute</h4>
+        <p th:unless="${user}">This text will never display</p>
+        <p th:unless="${'sometext'}">This text will never display</p>
+        <p th:unless="${null}">This text will always display</p>
+        <p th:unless="${'off' or 'false' or 'no'}">This text will always display</p>
+        <p th:unless="${param.test}">Unless the test parameter exists</p>
+        <p th:unless="${testParam == '1'}">Unless the test parameter is 1</p>
+    </div>
+    <div class="span3">
+        <h4>th:switch attribute</h4>
+        <div th:switch="${testParam}" th:remove="tag">
+            <p th:case="'1'">Switch message for one</p>
+            <p th:case="'2'">Switch message for two</p>
+            <p th:case="*">Default switch message</p>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="span3">
+        <h4>th:remove attribute</h4>
+        <div th:remove="all">
+            <!-- This is a comment that is not displayed when rendered -->
+        </div>
+        <div th:switch="${testParam}" th:remove="tag">
+            <p th:case="'1'">Switch message for one</p>
+            <p th:case="'2'">Switch message for two</p>
+            <p th:case="*">Default switch message</p>
+        </div>
+        <ul th:remove="all-but-first">
+            <li>First item</li>
+            <li>Second item</li>
+            <li>Third item</li>
+        </ul>
+        <div class="clearfix" th:remove="body">
+            <!-- This is a comment that is not displayed when rendered,
+                but the clearfix div still exists -->
+        </div>
+        <div class="ajax-container" th:remove="body">
+            <!-- This is the template loaded via ajax -->
+            <div th:substituteby="some/ajax/template"></div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="span8">
+        <br />
+        <br />
+        <a th:href="@{/iteration}" class="btn pull-right">Next &raquo;</a>
+    </div>
+</div>
