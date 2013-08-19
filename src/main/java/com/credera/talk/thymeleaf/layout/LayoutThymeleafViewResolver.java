@@ -41,7 +41,7 @@ public class LayoutThymeleafViewResolver extends ThymeleafViewResolver {
 
         AbstractThymeleafView view = (AbstractThymeleafView) super.loadView(viewName, locale);
 
-        view.addStaticVariable("templateName", originalViewName);
+        view.addStaticVariable("TEMPLATENAME", originalViewName);
 
         return view;
     }

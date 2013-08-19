@@ -6,13 +6,9 @@
     <header th:substituteby="common/partials/header"></header>
     <div class="container-fluid" style="margin-top: 60px;">
         <div class="row-fluid">
-            <div class="span3">
-                <div th:substituteby="common/partials/sidebar"></div>
-            </div>
+            <div class="span3" th:include="common/partials/sidebar"></div>
             <!--/span-->
-            <div class="span9">
-                <div th:substituteby="${templateName}"></div>
-            </div>
+            <div class="span9" th:include="${TEMPLATENAME}"></div>
             <!--/span-->
         </div>
         <!--/row-->
