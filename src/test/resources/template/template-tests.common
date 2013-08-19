@@ -1,0 +1,29 @@
+%TEMPLATE_MODE HTML5
+# ------------ separator comment -----------
+%CONTEXT
+catalogService= new com.credera.talk.thymeleaf.service.CatalogService().initProducts()
+user= new com.credera.talk.thymeleaf.domain.User("Justin", "Munn")
+products= catalogService.getAllProducts()
+productMap= catalogService.getProductsMap()
+categoryProductMap= catalogService.getCategoryProductsMap()
+categories= catalogService.getAllCategories()
+# ------------------------------------------
+%MESSAGES
+#Home controller
+home.message=Welcome to the Thymeleaf demo!
+
+#Basic Tags
+tags.greeting=Hello, welcome to the demo.
+tags.greeting.personal={0}, welcome to the demo.
+tags.greeting.formatted={0}, welcome to the <strong>demo</strong>.
+
+
+#Product error messages
+product.sku.required=Sku is a required field.
+product.name.required=Name is a required field.
+product.description.required=Description is a required field.
+product.price.required=Price is a required field.
+product.price.invalid=Price must be a positive decimal.
+typeMismatch.price=Price must be a positive decimal.
+product.category.required=Category is a required field.
+# ------------------------------------------

@@ -1,0 +1,6 @@
+%EXTENDS template-tests.common
+
+%INPUT (classpath:templates/layout/index-layout.html)
+# ------------------------------------------------------------
+%OUTPUT
+<h2>Welcome to the Thymeleaf demo!</h2>

@@ -1,0 +1,76 @@
+%EXTENDS template-tests.common
+
+%INPUT (classpath:templates/iteration/iteration-1.html)
+%OUTPUT
+
+    <h2>Iteration</h2>
+    <br />
+    <h3>1. Basic Iteration</h3>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Sku</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Category</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>12345</td>
+                <td>Test Widget</td>
+                <td>This widget helps testing gizmos</td>
+                <td>10.00</td>
+                <td>Widget</td>
+            </tr><tr>
+                <td>23452</td>
+                <td>Multi-Widget</td>
+                <td>Like a normal widget, but multi</td>
+                <td>100.00</td>
+                <td>Widget</td>
+            </tr><tr>
+                <td>8238734</td>
+                <td>Gizmo</td>
+                <td>This is your standard gizmo</td>
+                <td>30.50</td>
+                <td>Gizmo</td>
+            </tr><tr>
+                <td>289720</td>
+                <td>Gizmo Mini</td>
+                <td>All the fun of a gizmo, but smaller</td>
+                <td>17.00</td>
+                <td>Gizmo</td>
+            </tr><tr>
+                <td>3342752</td>
+                <td>iWidget</td>
+                <td>A widget that will be recalled to do copyright infringment</td>
+                <td>109.00</td>
+                <td>Widget</td>
+            </tr><tr>
+                <td>65436863</td>
+                <td>Super Gizmo</td>
+                <td>This is the super version of a normal gizmo</td>
+                <td>63.00</td>
+                <td>Gizmo</td>
+            </tr><tr>
+                <td>2345262</td>
+                <td>Micro Widget</td>
+                <td>So micro, it is pretty much useless</td>
+                <td>1.25</td>
+                <td>Widget</td>
+            </tr><tr>
+                <td>2345w4</td>
+                <td>Secret Sauce</td>
+                <td>We dont know what category this goes in</td>
+                <td>1500.00</td>
+                <td>Foo</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="clearfix"></div>
+    <div class="span8">
+        <br />
+        <br />
+        <a class="btn pull-right" href="/testing/iteration/2">Next &raquo;</a>
+    </div>

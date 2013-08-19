@@ -26,7 +26,7 @@ public class CatalogService {
     private Map<Long, Category> categories = new HashMap<>();
 
     @PostConstruct
-    protected void initProducts() {
+    public CatalogService initProducts() {
         Category widgetCategory = new Category(getNextCategoryId(), "Widget", "Widgets do things");
         Category gizmoCategory = new Category(getNextCategoryId(), "Gizmo", "Gizmos are are used to build things");
         Category fooCategory = new Category(getNextCategoryId(), "Foo", "We don't know what these do");
@@ -48,6 +48,7 @@ public class CatalogService {
         for (Product product : productList) {
             products.put(product.getId(), product);
         }
+        return this;
     }
 
     public List<Product> getAllProducts() {
