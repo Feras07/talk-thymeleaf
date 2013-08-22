@@ -2,6 +2,10 @@ Thymeleaf Tech Talk
 ===================
 A demo of the features of Thymeleaf + Spring MVC 3.2
 
+Presentation
+------------
+The presentation for this demo can be found at [Slideshare](http://www.slideshare.net/JustinMunn/spring-user-group-thymeleaf-08212013)
+
 Requirements
 ------------
 - Java 7
